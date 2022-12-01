@@ -31,7 +31,7 @@ import { Options } from "./interfaces";
 const IS_SERVER = typeof window === "undefined";
 const ADAPTER_CACHE_KEY = "Web3Auth-cachedAdapter";
 
-export class Web3AuthConnector extends Connector {
+export class Web3AuthConnector extends Connector<SafeEventEmitterProvider, Options, Signer> {
   ready = !IS_SERVER;
 
   readonly id = "web3Auth";
@@ -191,7 +191,7 @@ export class Web3AuthConnector extends Connector {
         }
 
         return resolve({
-          account,
+          account: getAddress(account),
           chain: {
             id: 0,
             unsupported: false,
@@ -272,11 +272,11 @@ export class Web3AuthConnector extends Connector {
     }
   }
 
-  async getAccount(): Promise<string> {
+  async getAccount() {
     const provider = new ethers.providers.Web3Provider(await this.getProvider());
     const signer = provider.getSigner();
     const account = await signer.getAddress();
-    return account;
+    return getAddress(account);
   }
 
   async getProvider() {

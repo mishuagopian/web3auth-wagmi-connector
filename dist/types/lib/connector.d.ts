@@ -3,7 +3,7 @@ import { SafeEventEmitterProvider } from "@web3auth/base";
 import { Web3AuthCore } from "@web3auth/core";
 import { Signer } from "ethers";
 import { Options } from "./interfaces";
-export declare class Web3AuthConnector extends Connector {
+export declare class Web3AuthConnector extends Connector<SafeEventEmitterProvider, Options, Signer> {
     ready: boolean;
     readonly id = "web3Auth";
     readonly name = "web3Auth";
@@ -26,7 +26,7 @@ export declare class Web3AuthConnector extends Connector {
     connect(): Promise<Required<ConnectorData>>;
     subscribeToAdpaterConnectionEvents(): Promise<Required<ConnectorData>>;
     init(): Promise<void>;
-    getAccount(): Promise<string>;
+    getAccount(): Promise<`0x${string}`>;
     getProvider(): Promise<SafeEventEmitterProvider>;
     getSigner(): Promise<Signer>;
     isAuthorized(): Promise<boolean>;

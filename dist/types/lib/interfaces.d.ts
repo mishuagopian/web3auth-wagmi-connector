@@ -1,6 +1,6 @@
 import type { OpenLoginOptions } from "@toruslabs/openlogin";
 import { OpenloginLoginParams } from "@web3auth/openlogin-adapter";
-export declare type LoginMethodConfig = Record<string, {
+export type LoginMethodConfig = Record<string, {
     /**
      * Display Name. If not provided, we use the default for openlogin app
      */
