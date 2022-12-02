@@ -1,0 +1,42 @@
+import { Chain, Connector, ConnectorData } from "@wagmi/core";
+import { SafeEventEmitterProvider } from "@web3auth/base";
+import { Web3AuthCore } from "@web3auth/core";
+import { Signer } from "ethers";
+import { Options } from "./interfaces";
+export declare class Web3AuthConnector extends Connector<SafeEventEmitterProvider, Options, Signer> {
+    ready: boolean;
+    readonly id = "web3Auth";
+    readonly name = "web3Auth";
+    provider: SafeEventEmitterProvider;
+    web3AuthInstance?: Web3AuthCore;
+    isModalOpen: boolean;
+    web3AuthOptions: Options;
+    private loginModal;
+    private socialLoginAdapter;
+    private torusWalletAdapter;
+    private metamaskAdapter;
+    private walletConnectV1Adapter;
+    private adapters;
+    private modalConfig;
+    private storage;
+    constructor(config: {
+        chains?: Chain[];
+        options: Options;
+    });
+    connect(): Promise<Required<ConnectorData>>;
+    subscribeToAdpaterConnectionEvents(): Promise<Required<ConnectorData>>;
+    init(): Promise<void>;
+    getAccount(): Promise<`0x${string}`>;
+    getProvider(): Promise<SafeEventEmitterProvider>;
+    getSigner(): Promise<Signer>;
+    isAuthorized(): Promise<boolean>;
+    getChainId(): Promise<number>;
+    disconnect(): Promise<void>;
+    protected onAccountsChanged(accounts: string[]): void;
+    protected onChainChanged(chainId: string | number): void;
+    protected onDisconnect(): void;
+    private subscribeToLoginModalEvents;
+    private initExternalWalletAdapters;
+    private subscribeToAdapterEvents;
+    private cacheWallet;
+}

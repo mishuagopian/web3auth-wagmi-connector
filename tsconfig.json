@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
     "strict": false,
     "module": "esnext",
     "target": "es6",
@@ -13,9 +12,17 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "out",
+    "paths": {
+      "crypto": [
+        "./node_modules/crypto-browserify"
+      ],
+      "stream": [
+        "./node_modules/stream-browserify"
+      ]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules/**"],
 }
-
