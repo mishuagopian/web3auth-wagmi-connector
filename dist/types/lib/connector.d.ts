@@ -40,3 +40,4 @@ export declare class Web3AuthConnector extends Connector<SafeEventEmitterProvide
     private subscribeToAdapterEvents;
     private cacheWallet;
 }
+export type Web3AuthConnectorType = Web3AuthConnector;

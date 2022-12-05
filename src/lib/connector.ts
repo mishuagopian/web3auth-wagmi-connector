@@ -467,3 +467,5 @@ export class Web3AuthConnector extends Connector<SafeEventEmitterProvider, Optio
     this.web3AuthInstance.cachedAdapter = walletName;
   }
 }
+
+export type Web3AuthConnectorType = Web3AuthConnector;
